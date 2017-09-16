@@ -13,8 +13,6 @@ defmodule KrakenEx.PrivateClient do
   end
 
   def process_request_headers(headers) do
-    IO.puts "HEADERS"
-    IO.inspect headers
     headers
   end
 end

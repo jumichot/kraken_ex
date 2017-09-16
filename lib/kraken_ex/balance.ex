@@ -5,11 +5,9 @@ defmodule KrakenEx.Balance do
   @method "Balance"
 
   def balance do
-    signature = Authentication.generate_signature(@method, "")
+    {body, signature} = Authentication.generate_signature(@method, %{})
     headers = Headers.header(signature)
-
-    @method
-    |> PrivateClient.get(headers)
+    PrivateClient.post(@method, body, headers, [recv_timeout: 5000])
     |> parse_response
   end
 
