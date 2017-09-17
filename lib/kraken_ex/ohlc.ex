@@ -39,7 +39,7 @@ defmodule KrakenEx.OHLC do
 
   def ohlc(pair, opts \\ []) do
     @method
-    |> compose_url(pair[:pair], opts[:interval], opts[:since])
+    |> compose_url(pair[:pair], pair[:interval], pair[:since])
     |> PublicClient.get
     |> parse_response
   end
